@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> <!--Básicamente, cada elemento (o atributo) en XML
+                                                pertenece a un espacio de nombres, a modo de
+                                                "calificación" del nombre del elemento.
+
+                                                Thymeleaf es un moderno motor de plantillas Java
+                                                del lado del servidor para entornos web e independientes.
+                                                El objetivo principal de Thymeleaf es traer elegantes
+                                                plantillas naturales a su flujo de trabajo de desarrollo: 
+                                                HTML que se puede mostrar correctamente en los navegadores 
+                                                y también funciona como prototipos estáticos, lo que permite 
+                                                una colaboración más sólida en los equipos de desarrollo.-->
+    <head>
+        <title>Inicio pro</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Practicas de Aplicaciones web con Spring Boot">
+        <meta name="keywords" content="Practicas con Spring Boot">
+        <meta name="author" content="Alejandro Cornejo">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+              integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <link href="../css/index.css" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body>
+
+        <h1>Inicio pro</h1>
+
+        <!--En la vista se accede a c/u de los elementos utilizando la etiqueta de <span> y utilizando el atributo "th:text"
+            y accediendo por medio de la expresión "${persona.nombre}" y con cada una de los elemtos de la clase del objeto
+            que se ha compartido.-->
+        <br/>
+            <!-- th:href es un atributo modificador de atributo: una vez procesado, calculará la URL del
+                 enlace que se utilizará y establecerá el atributo href de la etiqueta en esta URL. -->
+        <a th:href="@{/agregar}">Agregar persona</a>
+        <br/>
+        <!--En está condicion lo que se hace es verificar si la tabla tiene datos, 
+            "si personas es diferente de null y personas es diferente de vacio" se agregan a la tabla-->
+        <div th:if="${personas != null and !personas.empty}">
+            <table class="table">
+                <thead>
+                    <tr class="table-info">
+                        <th>Id </th>
+                        <th>Nombre </th>
+                        <th>Apellido </th>
+                        <th>Email </th>
+                        <th>Teléfono </th>
+                        <th>Editar </th>
+                        <th>Eliminar </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="persona : ${personas}">
+                        <td class="table-success" th:text="${persona.id_persona}">Mostrar Nombre</td>
+                        <td class="table-success" th:text="${persona.nombre}">Mostrar Nombre</td>
+                        <td class="table-success" th:text="${persona.apellido}">Mostrar Apellido </td>
+                        <td class="table-success" th:text="${persona.email}">Mostrar Email </td>
+                        <td class="table-success" th:text="${persona.telefono}">Mostrar Teléfono</td>
+                        <!-- th:href="@{/editar/} + ${persona.id_persona}": el path de editar se encarga de
+                        seleccionar un objeto de tipo persona y posteriormente redirigirlo a la pagina de modificar.
+                        Sin embargo, se debe especificar el id del objeto persona que se esta seleccionando,  -->
+                        <td class="table-success"> <a type="button" class="btn btn-outline-warning" th:href="@{/editar/} + ${persona.id_persona}" /><i class="fas fa-edit"></i></td>
+                        <!-- <td class="table-success" > <a th:href="@{/eliminar/} + ${persona.id_persona}" th:text="Eliminar" /></td> -->
+                        <td class="table-success"> <a type="button" class="btn btn-outline-danger" th:href="@{/eliminar(id_persona=${persona.id_persona})}" ><i class="fas fa-trash-alt"></i></a></td>
+                        <!-- Forma query param -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Aquí es lo contrario, en está condicion lo que se hace es verificar si la tabla está vacia, 
+            "si personas es igual a null o personas es diferente de vacio" se muestra el comentario
+            que está entre los div-->
+        <div th:if="${personas == null or personas.empty}">La lista de personas está vacia</div>
+
+        <br>
+
+        <!--
+        <br />
+        Nombre: <span th:text="${persona.nombre}"> Esto es para mostrar el nombre, ya que es sustituido por el valor que está
+            dentro de th:text</span>
+        <br />
+        Apellido: <span th:text="${persona.apellido}"> Esto es para mostrar el apellido, ya que es sustituido por el valor que está
+            dentro de th:text</span>
+        <br />
+        Email: <span th:text="${persona.email}"> Esto es para mostrar el email, ya que es sustituido por el valor que está
+            dentro de th:text</span>
+        <br />
+        Telefono: <span th:text="${persona.telefono}"> Esto es para mostrar el telefono, ya que es sustituido por el valor que está
+            dentro de th:text</span>
+        -->
+
+        
+    </body>
+</html>
+
+

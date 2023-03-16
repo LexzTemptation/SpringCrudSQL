@@ -24,7 +24,7 @@
 
     <h1>Datos de la persona</h1>
     <br/>
-    <a th:href="@{/}">Inicio Pro</a><!-- Zelda que regresa a la pagina inicial -->
+    <a class="btn btn-primary" th:href="@{/}">Listado de personas</a><!-- Zelda que regresa a la pagina inicial -->
     <br>
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
     <!-- th:action="@{/guardar}": guarda la información en la base de datos
@@ -74,7 +74,7 @@
         </div>
         <div class="mb-3 row">
         <div class="col-sm-5">
-            <input class="btn btn-outline-success" type="submit" name="guardar" value="Guardar"/> 
+            <input class="btn btn-success" type="submit" name="guardar" value="Guardar"/> 
             <!-- Esta es la forma de Spring para los botones, al accionar este botón se guardarán los datos
                  por medio del "th:action="@{/guardar}""-->
         </div>

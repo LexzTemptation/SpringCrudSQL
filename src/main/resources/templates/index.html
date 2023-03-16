@@ -11,7 +11,7 @@
                                                 y también funciona como prototipos estáticos, lo que permite 
                                                 una colaboración más sólida en los equipos de desarrollo.-->
     <head>
-        <title>Inicio pro</title>
+        <title>Listado de personas</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,8 +37,8 @@
         <br/>
             <!-- th:href es un atributo modificador de atributo: una vez procesado, calculará la URL del
                  enlace que se utilizará y establecerá el atributo href de la etiqueta en esta URL. -->
-        <a th:href="@{/agregar}">Agregar persona</a>
-        <br/>
+        <a class="btn btn-success" th:href="@{/agregar}">Agregar persona <i class="far fa-plus-square"></i></a>
+        <br/><br/>
         <!--En está condicion lo que se hace es verificar si la tabla tiene datos, 
             "si personas es diferente de null y personas es diferente de vacio" se agregan a la tabla-->
         <div th:if="${personas != null and !personas.empty}">

@@ -1,10 +1,10 @@
 /* Data Access Object*/
 package com.org.athtec.SpringCrudSQL.dao;
 
-import org.springframework.data.repository.CrudRepository;
-
+/* import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import com.org.athtec.SpringCrudSQL.domain.Persona;
-
+ */
 /*Interface: Otra forma de lograr la abstracción en Java es con interfaces.
 Una interfaz es una "clase completamente abstracta" que se utiliza para agrupar
 métodos relacionados con cuerpos vacíos. 
@@ -16,7 +16,7 @@ Spring Data Repository. Si alguien quiere usar CrudRepository en la aplicación
 Spring Boot, debe crear una interfaz y ampliar la interfaz de CrudRepository. 
   
   */
-public interface PersonaDao extends CrudRepository<Persona, Long>
+/* public interface PersonaDao extends CrudRepository<Persona, Long>
 {
 
-}
+} */

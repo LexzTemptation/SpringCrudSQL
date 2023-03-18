@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> <!--Básicamente, cada elemento (o atributo) en XML
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <!--Básicamente, cada elemento (o atributo) en XML
                                                 pertenece a un espacio de nombres, a modo de
                                                 "calificación" del nombre del elemento.
 
@@ -29,7 +30,7 @@
     
     <body>
 
-        <h1>Inicio pro</h1>
+        <h1>Listado de personas</h1>
 
         <!--En la vista se accede a c/u de los elementos utilizando la etiqueta de <span> y utilizando el atributo "th:text"
             y accediendo por medio de la expresión "${persona.nombre}" y con cada una de los elemtos de la clase del objeto
@@ -56,7 +57,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="persona : ${personas}">
-                        <td class="table-success" th:text="${persona.id_persona}">Mostrar Nombre</td>
+                        <td class="table-success" th:text="${persona.id}">Mostrar Nombre</td>
                         <td class="table-success" th:text="${persona.nombre}">Mostrar Nombre</td>
                         <td class="table-success" th:text="${persona.apellido}">Mostrar Apellido </td>
                         <td class="table-success" th:text="${persona.email}">Mostrar Email </td>

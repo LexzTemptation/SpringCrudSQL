@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.org.athtec.SpringCrudSQL.dao.PersonaDao;
+/* import com.org.athtec.SpringCrudSQL.dao.PersonaDao; */
+import com.org.athtec.SpringCrudSQL.dao.TransactionalRepository;
 import com.org.athtec.SpringCrudSQL.domain.Persona;
 
 @Service /*Los componentes de servicio son el archivo de clase que contiene la
@@ -21,7 +22,7 @@ public class PersonaServiceImpl implements PersonaService
                 * por el contenedor
                 * se utiliza la notación "@Autowired", muy similar a "Inject"
                 */
-    private PersonaDao personaDao;
+    private TransactionalRepository personaDao;
 
     /* Cuando se está dentro de la capa DAO se maneja el concepto de transacciones,
      * esto quiere decir que cualquier operación con la base de datos en dado caso
@@ -77,7 +78,7 @@ public class PersonaServiceImpl implements PersonaService
     @Transactional(readOnly = true) /*Igual que en guardar persona. */
     public Persona encontrarPersona(Persona persona)
     {
-        return personaDao.findById(persona.getId_persona()).orElse(null);
+        return personaDao.findById(persona.getId()).orElse(null);
         /* Variable de personaDao y método de "findById();", 
             en este caso requiere y recibe la llave primaria "persona.getId_persona()", 
             y se hace el return del objeto encontrado.
